@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # --- 1. INITIAL CONFIGURATION ---
 st.set_page_config(
-    page_title="Simplicial Reduction Experimenter",
+    page_title="Simplicial Reduction",
     page_icon="🧪",
     layout="wide"
 )
@@ -25,7 +25,7 @@ except ImportError as e:
     PYGARG_DISPONIBLE = False
     st.error(f"Critical error importing pygarg: {e}")
 
-st.title("🧪 Simplicial Reduction Laboratory for AFs")
+st.title("🧪 Simplicial Reduction for AFs")
 st.markdown("""
 This application allows you to load Argumentation Framework (`.apx`) instances, 
 visualize their topology, execute simplicial reduction to W-QBAF under different semantics, and analyze compression metrics.
@@ -76,7 +76,7 @@ semantica_clave = st.sidebar.selectbox(
 modo_umbral = st.sidebar.radio("Pruning Threshold Criterion", ["Dynamic (Mean)", "Manual"])
 umbral_manual = None
 if modo_umbral == "Manual":
-    umbral_manual = st.sidebar.slider("Threshold Value ($w \ge \mu$)", 0.0, 1.0, 0.1, 0.05)
+    umbral_manual = st.sidebar.slider(r"Threshold Value ($w \ge \mu$)", 0.0, 1.0, 0.1, 0.05)
 
 
 # --- 3. PROCESSING LOGIC ---
@@ -162,7 +162,7 @@ if archivo_seleccionado and archivo_seleccionado.exists():
     
     total_reducidos = len(conectados) + len(aislados)
     col4.metric("W-QBAF Nodes", total_reducidos)
-    col5.metric("Threshold ($\mu$)", f"{umbral_usado:.2f}")
+    col5.metric(r"Threshold ($\mu$)", f"{umbral_usado:.2f}")
     
     st.markdown("---")
     
