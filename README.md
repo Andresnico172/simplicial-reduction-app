@@ -47,7 +47,7 @@ Given the non-empty facets $X_1, \dots, X_n$ (the meta-arguments), the app build
 **1. Attack weights.** For every ordered pair $X \neq Y$, the weight is the share of members of $X$ that attack at least
 one member of $Y$:
 
-$$w(X, Y) = \frac{\lvert \{ x \in X : x \text{ attacks some } y \in Y \} \rvert}{\lvert X \rvert}$$
+$$w(X, Y) = \frac{\lvert \lbrace x \in X : x \text{ attacks some } y \in Y \rbrace \rvert}{\lvert X \rvert}$$
 
 Pairs with no attack get no edge.
 
@@ -66,7 +66,9 @@ $\tau = 0.5$ is balanced. Isolated meta-arguments, and those with no external at
 
 **4. Compression.** The size of the reduced graph relative to the original is
 
-$$\text{compression} = \frac{\#\text{meta-arguments}}{\lvert \mathrm{Arg} \rvert}.$$
+$$\text{compression} = \frac{n}{\lvert \mathrm{Arg} \rvert},$$
+
+where $n$ is the number of meta-arguments (connected and isolated).
 
 Below 100 % the AF has been compressed. Above 100 % there are more facets than arguments (*combinatorial explosion*),
 and 0 % means no non-empty extension survived (*structural collapse*).
